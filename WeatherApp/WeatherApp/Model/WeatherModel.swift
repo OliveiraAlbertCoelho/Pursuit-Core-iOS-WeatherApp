@@ -9,5 +9,9 @@
 import Foundation
 
 struct WeatherWrapper: Codable{
-    
+    let currently: Weather
+}
+struct Weather {
+    let summary: String
+    let icon: String
 }
