@@ -13,8 +13,8 @@ class WeatherFetch {
  
     static let manager = WeatherFetch()
 
-    func getWeather(completionHandler: @escaping (Result<[Film], AppError>) -> ()) {
-            let urlStr = "https://ghibliapi.herokuapp.com/films"
+    func getWeather(completionHandler: @escaping (Result<[Weather], AppError>) -> ()) {
+        let urlStr = "https://api.darksky.net/forecast/\(Secretes.apiKey)/37.8267,-122.4233"
             guard let url = URL(string: urlStr) else {
                 completionHandler(.failure(.badURL))
                 return
@@ -26,8 +26,8 @@ class WeatherFetch {
                     completionHandler(.failure(error))
                 case .success(let data):
                     do {
-                    let films = try JSONDecoder().decode([Film].self, from: data)
-                    completionHandler(.success(films))
+                    let weather = try JSONDecoder().decode([Weather].self, from: data)
+                    completionHandler(.success(weather))
                     } catch {
                         print(error)
                         completionHandler(.failure(.other(rawError: error)))

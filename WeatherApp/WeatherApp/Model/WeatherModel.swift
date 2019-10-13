@@ -11,7 +11,7 @@ import Foundation
 struct WeatherWrapper: Codable{
     let currently: Weather
 }
-struct Weather {
+struct Weather: Codable {
     let summary: String
     let icon: String
 }
