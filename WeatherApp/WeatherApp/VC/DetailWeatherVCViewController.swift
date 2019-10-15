@@ -14,6 +14,7 @@ class DetailWeatherVCViewController: UIViewController {
     var images: ImagesData?{
         didSet{
             getImage()
+            loadLabels()
         }}
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var cityImage: UIImageView!
@@ -51,7 +52,10 @@ class DetailWeatherVCViewController: UIViewController {
             }
         }
     }
-    
-    
-    
+    private func loadLabels(){
+        TitleLabel.text = "Weather forcast for \(city) for \(weather!.date)"
+        highLabel.text = weather?.highTemp
+        lowLabel.text = weather?.lowTemp
+        
+    }
 }
