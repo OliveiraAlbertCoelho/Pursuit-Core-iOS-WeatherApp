@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailWeatherVCViewController: UIViewController {
+    var weather: DataWrapper?
     @IBOutlet weak var TitleLabel: UILabel!
       @IBOutlet weak var cityImage: UIImageView!
       @IBOutlet weak var highLabel: UILabel!
@@ -16,10 +17,12 @@ class DetailWeatherVCViewController: UIViewController {
       @IBOutlet weak var sunriseLabel: UILabel!
       @IBOutlet weak var sunsetLabel: UILabel!
       @IBOutlet weak var precipitation: UILabel!
-      
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    private func loadData(){
+        
     }
     
   

@@ -61,7 +61,17 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }}
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+             guard let weatherDetail = segue.destination as? DetailWeatherVCViewController else {
+                 fatalError("Unexpected segue")
+             }
+           let selectedCell = sender as! WeatherCell
+           let selectedIndexPath = (collectionTable.indexPath(for: selectedCell)?.row)!
+        weatherDetail.weather = weather[selectedIndexPath]
+        
+    }
+}
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
