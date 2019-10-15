@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		506FBC6F2355661F00C6B02F /* DetailWeatherVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FBC6E2355661F00C6B02F /* DetailWeatherVCViewController.swift */; };
 		50ABEB8F2350FE2C0034057C /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB8E2350FE2C0034057C /* WeatherCell.swift */; };
 		50ABEB94235101E90034057C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB90235101E90034057C /* NetworkHelper.swift */; };
 		50ABEB97235101E90034057C /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB93235101E90034057C /* AppError.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		506FBC6E2355661F00C6B02F /* DetailWeatherVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherVCViewController.swift; sourceTree = "<group>"; };
 		50ABEB8E2350FE2C0034057C /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherCell.swift; path = WeatherApp/VC/WeatherCell.swift; sourceTree = SOURCE_ROOT; };
 		50ABEB90235101E90034057C /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		50ABEB93235101E90034057C /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				548CE055234D33B500B5177D /* ViewController.swift */,
+				506FBC6E2355661F00C6B02F /* DetailWeatherVCViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				50ABEB97235101E90034057C /* AppError.swift in Sources */,
 				548CE056234D33B500B5177D /* ViewController.swift in Sources */,
 				50ABEB9D235104EC0034057C /* Secretes.swift in Sources */,
+				506FBC6F2355661F00C6B02F /* DetailWeatherVCViewController.swift in Sources */,
 				50ABEB8F2350FE2C0034057C /* WeatherCell.swift in Sources */,
 				50ABEB9B235102AE0034057C /* WeatherModel.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,

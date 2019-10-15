@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     var latAndLongHolder = ""{
         didSet{
                 loadData(userInput: latAndLongHolder)
-            
         }
     }
     @IBOutlet weak var userText: UITextField!

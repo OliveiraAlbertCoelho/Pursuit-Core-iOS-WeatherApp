@@ -15,6 +15,7 @@ class ZipCodeHelper {
                 DispatchQueue.main.async {
                     if let placemark = placemarks?.first, let coordinate = placemark.location?.coordinate, let name = placemark.locality  {
                         completionHandler(.success((coordinate.latitude, coordinate.longitude,name)))
+                        print(name)
                     } else {
                         let locationError: LocationFetchingError
                         if let error = error {
