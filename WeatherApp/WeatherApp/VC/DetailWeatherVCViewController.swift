@@ -10,20 +10,48 @@ import UIKit
 
 class DetailWeatherVCViewController: UIViewController {
     var weather: DataWrapper?
+    var city = String()
+    var images: ImagesData?{
+        didSet{
+            getImage()
+        }}
     @IBOutlet weak var TitleLabel: UILabel!
-      @IBOutlet weak var cityImage: UIImageView!
-      @IBOutlet weak var highLabel: UILabel!
-      @IBOutlet weak var lowLabel: UILabel!
-      @IBOutlet weak var sunriseLabel: UILabel!
-      @IBOutlet weak var sunsetLabel: UILabel!
-      @IBOutlet weak var precipitation: UILabel!
+    @IBOutlet weak var cityImage: UIImageView!
+    @IBOutlet weak var highLabel: UILabel!
+    @IBOutlet weak var lowLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var precipitation: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadDataPixabay()
     }
-    private func loadData(){
-        
+    private func loadDataPixabay(){
+        ImagesFetch.manager.getImages(named: city) { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let imageData):
+                    self.images = imageData
+                }
+            }
+        }
+    }
+    private func getImage(){
+        ImageHelper.shared.fetchImage(urlString: images!.largeImageURL) { (result) in
+            DispatchQueue.main.async {
+                switch result{
+                case .failure(let error):
+                    print(error)
+                case .success(let imageData):
+                    self.cityImage.image = imageData
+                }
+            }
+        }
     }
     
-  
+    
+    
 }

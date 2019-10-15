@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     var weather = [DataWrapper](){
         didSet{
             collectionTable.reloadData()
@@ -69,7 +68,7 @@ class ViewController: UIViewController {
            let selectedCell = sender as! WeatherCell
            let selectedIndexPath = (collectionTable.indexPath(for: selectedCell)?.row)!
         weatherDetail.weather = weather[selectedIndexPath]
-        
+        weatherDetail.city = cityName.text!
     }
 }
 
