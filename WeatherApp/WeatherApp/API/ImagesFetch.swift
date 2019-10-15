@@ -14,9 +14,9 @@ class ImagesFetch {
     static let manager = ImagesFetch()
 
     func getImages(named: String,completionHandler: @escaping (Result<ImagesData, AppError>) -> ()) {
-        let formatedString = named.replacingOccurrences(of: " ", with: "-")
+        let formatedString = named.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://pixabay.com/api/?key=\(Secretes.pixabayKey)&q=\(formatedString)"
-        
+        print(urlString)
         guard let url = URL(string: urlString) else {
             completionHandler(.failure(.badURL))
                       return

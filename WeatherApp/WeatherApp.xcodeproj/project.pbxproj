@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		506FBC6F2355661F00C6B02F /* DetailWeatherVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FBC6E2355661F00C6B02F /* DetailWeatherVCViewController.swift */; };
+		50AB1BEB235659C10023625D /* ImagePersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB1BE9235659C10023625D /* ImagePersistence.swift */; };
+		50AB1BEC235659C10023625D /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB1BEA235659C10023625D /* PersistenceHelper.swift */; };
+		50AB1BEF23565B510023625D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AB1BEE23565B510023625D /* Photo.swift */; };
 		50ABEB8F2350FE2C0034057C /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB8E2350FE2C0034057C /* WeatherCell.swift */; };
 		50ABEB94235101E90034057C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB90235101E90034057C /* NetworkHelper.swift */; };
 		50ABEB97235101E90034057C /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ABEB93235101E90034057C /* AppError.swift */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		506FBC6E2355661F00C6B02F /* DetailWeatherVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherVCViewController.swift; sourceTree = "<group>"; };
+		50AB1BE9235659C10023625D /* ImagePersistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePersistence.swift; sourceTree = "<group>"; };
+		50AB1BEA235659C10023625D /* PersistenceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		50AB1BEE23565B510023625D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		50ABEB8E2350FE2C0034057C /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherCell.swift; path = WeatherApp/VC/WeatherCell.swift; sourceTree = SOURCE_ROOT; };
 		50ABEB90235101E90034057C /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		50ABEB93235101E90034057C /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -59,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50AB1BE8235659A80023625D /* PersistenceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				50AB1BE9235659C10023625D /* ImagePersistence.swift */,
+				50AB1BEA235659C10023625D /* PersistenceHelper.swift */,
+			);
+			path = PersistenceHelper;
+			sourceTree = "<group>";
+		};
 		50ABEB892350DDF20034057C /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +88,7 @@
 			children = (
 				50ABEB9A235102AE0034057C /* WeatherModel.swift */,
 				50C2FBFB2356249700DC0D4B /* PIxabayModel.swift */,
+				50AB1BEE23565B510023625D /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +142,7 @@
 		548CE050234D33B500B5177D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				50AB1BE8235659A80023625D /* PersistenceHelper */,
 				50ABEB8D2350FE030034057C /* CustomCell */,
 				50ABEB8C2350DE110034057C /* Supporting */,
 				50ABEB8B2350DDFF0034057C /* API */,
@@ -213,12 +230,15 @@
 			files = (
 				548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */,
 				50C2FBFE2356258300DC0D4B /* ImagesFetch.swift in Sources */,
+				50AB1BEB235659C10023625D /* ImagePersistence.swift in Sources */,
 				50ABEB97235101E90034057C /* AppError.swift in Sources */,
 				548CE056234D33B500B5177D /* ViewController.swift in Sources */,
 				50ABEB9D235104EC0034057C /* Secretes.swift in Sources */,
 				506FBC6F2355661F00C6B02F /* DetailWeatherVCViewController.swift in Sources */,
+				50AB1BEC235659C10023625D /* PersistenceHelper.swift in Sources */,
 				50ABEB8F2350FE2C0034057C /* WeatherCell.swift in Sources */,
 				50ABEB9B235102AE0034057C /* WeatherModel.swift in Sources */,
+				50AB1BEF23565B510023625D /* Photo.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
 				50C2FBFC2356249700DC0D4B /* PIxabayModel.swift in Sources */,
 				50ABEB94235101E90034057C /* NetworkHelper.swift in Sources */,

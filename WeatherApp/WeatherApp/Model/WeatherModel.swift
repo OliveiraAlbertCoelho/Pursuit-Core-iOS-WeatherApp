@@ -23,12 +23,33 @@ struct DataWrapper: Codable{
     let icon: String
     let temperatureHigh: Double
     let temperatureLow: Double
+    let sunriseTime: Int
+    let sunsetTime: Int
+    let windSpeed: Double
+    let precipIntensityMax: Double
     var date : String {
         get {
             let date = NSDate(timeIntervalSince1970: TimeInterval(time)) as Date
             let df = DateFormatter()
             df.dateFormat = "MMM-dd-yyyy"
             return df.string(from:date)
+        }
+    }
+    var timeSunset : String {
+        get {
+            let date = NSDate(timeIntervalSince1970: TimeInterval(sunsetTime)) as Date
+            let df = DateFormatter()
+            df.dateFormat = "hh:mm a"
+            return "Sunset: \(df.string(from:date))"
+        }
+    }
+    
+    var timeSunRise : String {
+        get {
+            let date = NSDate(timeIntervalSince1970: TimeInterval(sunriseTime)) as Date
+            let df = DateFormatter()
+            df.dateFormat = "hh:mm a"
+            return "Sunrise \(df.string(from:date))"
         }
     }
     var highTemp : String {
