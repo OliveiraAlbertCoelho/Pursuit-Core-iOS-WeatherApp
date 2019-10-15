@@ -214,6 +214,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bRJ-gc-J0F"/>
                     </view>
+                    <connections>
+                        <outlet property="TitleLabel" destination="0fU-Pp-eOo" id="nLc-Yn-Yfu"/>
+                        <outlet property="cityImage" destination="SK9-pf-uqM" id="k4S-CY-yLQ"/>
+                        <outlet property="highLabel" destination="hpz-Xq-ve2" id="VMR-uX-wFk"/>
+                        <outlet property="lowLabel" destination="5uj-l5-nN6" id="Gif-2M-0eh"/>
+                        <outlet property="precipitation" destination="s5N-Gf-Jgh" id="rS3-w3-qjR"/>
+                        <outlet property="sunriseLabel" destination="4vA-Nr-hVm" id="sAA-xf-4LW"/>
+                        <outlet property="sunsetLabel" destination="VVQ-k2-f8w" id="JRh-dQ-B3f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlC-tV-X5S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
