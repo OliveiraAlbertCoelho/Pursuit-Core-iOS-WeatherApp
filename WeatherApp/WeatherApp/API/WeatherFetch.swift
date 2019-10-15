@@ -13,21 +13,25 @@ class WeatherFetch {
  
     static let manager = WeatherFetch()
 
-    func getWeather(completionHandler: @escaping (Result<[Weather], AppError>) -> ()) {
-        let urlStr = "https://api.darksky.net/forecast/\(Secretes.apiKey)/37.8267,-122.4233"
-            guard let url = URL(string: urlStr) else {
-                completionHandler(.failure(.badURL))
-                return
-            }
-            
-            NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) { (result) in
+    func getWeather(latAndLong: String?,completionHandler: @escaping (Result<[DataWrapper], AppError>) -> ()) {
+        
+        var urlString = "https://api.darksky.net/forecast/\(Secretes.apiKey)/37.8267,-122.4233"
+        if let userInfo = latAndLong{
+            urlString = "https://api.darksky.net/forecast/\(Secretes.apiKey)/\(userInfo)"
+        }
+       
+        guard let url = URL(string: urlString) else {
+            completionHandler(.failure(.badURL))
+                      return
+                  }
+            NetworkHelper.manager.performDataTask(withUrl: url , andMethod: .get) { (result) in
                 switch result {
                 case .failure(let error) :
                     completionHandler(.failure(error))
                 case .success(let data):
                     do {
-                    let weather = try JSONDecoder().decode([Weather].self, from: data)
-                    completionHandler(.success(weather))
+                    let weather = try JSONDecoder().decode(WeatherWrapper.self, from: data)
+                        completionHandler(.success(weather.daily.data))
                     } catch {
                         print(error)
                         completionHandler(.failure(.other(rawError: error)))
@@ -37,4 +41,5 @@ class WeatherFetch {
             
             
         }
+    
     }
