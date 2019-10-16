@@ -25,10 +25,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setModeFromUserDefaults()
+        loadDataUserDefault()
+        setDelegates()
+        
+        
+    }
+    private func loadDataUserDefault(){
+        if let text = userText.text {
+            getWeather(zipcode: text)
+        }
+    }
+    private func setDelegates(){
         collectionTable.delegate = self
         collectionTable.dataSource = self
         userText.delegate = self
     }
+    
     private func loadData(userInput: String?){
         WeatherFetch.manager.getWeather(latAndLong: userInput){ (result) in
             DispatchQueue.main.async {
@@ -59,6 +72,11 @@ class ViewController: UIViewController {
                     self.latAndLongHolder = "\(lat.description),\(long.description)"
                 }
             }
+        }
+    }
+    private func setModeFromUserDefaults(){
+        if let mode = UserDefaultWrapper.manager.getMode() {
+            userText.text = mode
         }
     }
 }
@@ -92,7 +110,10 @@ extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text{
             getWeather(zipcode: text)
+            UserDefaultWrapper.manager.store(mode:text)
+            
         }
         return true
     }
+    
 }
