@@ -9,9 +9,49 @@
 import UIKit
 
 class FavoritesVC: UIViewController {
-
+    var favorite = [Photo](){
+        didSet{
+            favoriteTable.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUserFavorites()
+             favoriteTable.delegate = self
+            favoriteTable.dataSource = self
     }
-
+     override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           loadUserFavorites()
+       }
+    @IBOutlet weak var favoriteTable: UICollectionView!
+    private func loadUserFavorites(){
+        do {
+            favorite = try ImagePersistence.manager.getImage()
+        }catch{
+            print(error)
+        }
+    }
+ 
 }
+extension FavoritesVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(favorite.count)
+        return favorite.count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = favoriteTable.dequeueReusableCell(withReuseIdentifier: "favCell", for: indexPath) as! FavoriteCell
+        let data = favorite[indexPath.row]
+        cell.favoriteImage.image = UIImage(data: data.image)
+        print(data.dateFormat)
+        cell.dateLabel.text = data.dateFormat
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+         return CGSize(width: 340, height: 350)
+     }
+    
+}
+

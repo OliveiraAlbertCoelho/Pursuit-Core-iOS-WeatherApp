@@ -13,51 +13,58 @@ class DetailWeatherVCViewController: UIViewController {
     var city = String()
     var images: ImagesData?{
         didSet{
-            getImage()
+           getImage()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(stackLabels)
+        loadDataPixabay()
+        SetUpView()
         constrainStackView()
         constrainImageView()
-        self.navigationItem.rightBarButtonItem = saveButton
     }
     
     lazy var weatherInfo: UILabel = {
         var weatherInfo = UILabel()
+        weatherInfo.textColor = .white
         weatherInfo.text = weatherData?.summary
         return weatherInfo
     }()
     lazy var titleLabel: UILabel = {
         var titleLabel = UILabel()
-        titleLabel.text = "Weather forcast for \(city) for \(weatherData!.date)"
+        titleLabel.textColor = .white
+        titleLabel.text = "\(city)  \(weatherData!.date)"
         return titleLabel
     }()
     lazy var highLabel: UILabel = {
         var highLabel = UILabel()
+        highLabel.textColor = .white
         highLabel.text = weatherData?.highTemp
         return highLabel
     }()
     lazy var lowLabel: UILabel = {
         var lowLabel = UILabel()
+        lowLabel.textColor = .white
         lowLabel.text = weatherData?.lowTemp
         return lowLabel
     }()
     lazy var sunriseLabel: UILabel = {
         var sunriseLabel = UILabel()
         sunriseLabel.text = weatherData?.timeSunRise
+        sunriseLabel.textColor = .white
         return sunriseLabel
     }()
     lazy var sunsetLabel: UILabel = {
         var sunsetLabel = UILabel()
+        sunsetLabel.textColor = .white
         sunsetLabel.text = weatherData?.timeSunset
         return sunsetLabel
     }()
     lazy var precipitation: UILabel = {
+        
         var precipitation = UILabel()
+         precipitation.textColor = .white
         precipitation.text =  "Inches of Precipitation: \(weatherData!.precipIntensityMax.description)"
         return precipitation
     }()
@@ -66,20 +73,17 @@ class DetailWeatherVCViewController: UIViewController {
         return cityImage
     }()
     lazy var saveButton: UIBarButtonItem = {
-        var saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: nil, action: #selector(saveAction(sender:)))
+        var saveButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(saveAction(sender:)))
         return saveButton
     }()
-    @IBAction func saveAction(sender: UIButton) {
-          //    guard let imageData = self.cityImage.image?.jpegData(compressionQuality: 0.5)
-        //    //        else {return}
-        //    //    let date = Date().description
-        //    //    let photoData = Photo(date: date, image: imageData)
-        //    //    try?
-        //    //        ImagePersistence.manager.saveImage(info: photoData)
-        //    //}
-    }
-    
-    
+    @IBAction func saveAction(sender: UIBarButtonItem) {
+              guard let imageData = self.cityImage.image?.jpegData(compressionQuality: 0.5)
+                    else {return}
+                let date = Date().description
+                let photoData = Photo(date: date, image: imageData)
+                try?
+                    ImagePersistence.manager.saveImage(info: photoData)
+            }
     lazy var stackLabels: UIStackView = {
         let stackLabels = UIStackView(arrangedSubviews: [titleLabel,weatherInfo,highLabel,lowLabel,sunriseLabel,sunsetLabel,precipitation])
         stackLabels.axis = .vertical
@@ -89,11 +93,12 @@ class DetailWeatherVCViewController: UIViewController {
         return stackLabels
     }()
     private func constrainStackView() {
+         view.addSubview(stackLabels)
         stackLabels.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackLabels.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackLabels.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            stackLabels.heightAnchor.constraint(equalToConstant: 400),
+            stackLabels.heightAnchor.constraint(equalToConstant: 350),
             stackLabels.widthAnchor.constraint(equalTo: view.widthAnchor),
         ])
     }
@@ -117,6 +122,7 @@ class DetailWeatherVCViewController: UIViewController {
                     print(error)
                 case .success(let imageData):
                     self.images = imageData
+                    
                 }
             }
         }
@@ -133,14 +139,9 @@ class DetailWeatherVCViewController: UIViewController {
             }
         }
     }
-    private func loadLabels(){
-        weatherInfo.text = weatherData?.summary
-        titleLabel.text = "\(city)  \(weatherData!.date)"
-        highLabel.text = weatherData?.highTemp
-        lowLabel.text = weatherData?.lowTemp
-        sunriseLabel.text = weatherData?.timeSunRise
-        sunsetLabel.text = weatherData?.timeSunset
-        precipitation.text = "Inches of Precipitation: \(weatherData!.precipIntensityMax.description)"
+    private func SetUpView(){
+      view.backgroundColor = .darkGray
+    self.navigationItem.rightBarButtonItem = saveButton
     }
 }
 

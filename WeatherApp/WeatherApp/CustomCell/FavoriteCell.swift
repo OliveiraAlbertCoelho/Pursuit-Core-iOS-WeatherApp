@@ -10,8 +10,8 @@ import UIKit
 
 class FavoriteCell: UICollectionViewCell {
     
-    lazy var favoriteImage: UIImageView = {
-        let favoriteImage = UIImageView()
-        return favoriteImage
-    }()
+    @IBOutlet weak var favoriteImage: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    
 }
