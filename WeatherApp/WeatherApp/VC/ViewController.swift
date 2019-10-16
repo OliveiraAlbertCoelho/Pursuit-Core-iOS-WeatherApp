@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     var latAndLongHolder = ""{
         didSet{
-                loadData(userInput: latAndLongHolder)
+            loadData(userInput: latAndLongHolder)
         }
     }
     @IBOutlet weak var userText: UITextField!
@@ -53,22 +53,13 @@ class ViewController: UIViewController {
                     }
                     alert.addAction(cancelMessage)
                     self.present(alert,animated: true)
-                   
+                    
                 case let .success(lat,long,name):
                     self.cityName.text = name
                     self.latAndLongHolder = "\(lat.description),\(long.description)"
                 }
             }
         }
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-             guard let weatherDetail = segue.destination as? DetailWeatherVCViewController else {
-                 fatalError("Unexpected segue")
-             }
-           let selectedCell = sender as! WeatherCell
-           let selectedIndexPath = (collectionTable.indexPath(for: selectedCell)?.row)!
-        weatherDetail.weather = weather[selectedIndexPath]
-        weatherDetail.city = cityName.text!
     }
 }
 
@@ -90,12 +81,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 340, height: 350)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc: DetailWeatherVCViewController = DetailWeatherVCViewController()
+        vc.weatherData = weather[indexPath.row]
+        vc.city = cityName.text!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text{
-        getWeather(zipcode: text)
-    }
+            getWeather(zipcode: text)
+        }
         return true
     }
 }

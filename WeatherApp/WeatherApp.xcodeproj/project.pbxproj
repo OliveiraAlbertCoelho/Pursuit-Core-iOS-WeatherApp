@@ -101,8 +101,8 @@
 		50ABEB8B2350DDFF0034057C /* API */ = {
 			isa = PBXGroup;
 			children = (
-				50ABEB93235101E90034057C /* AppError.swift */,
 				50ABEB90235101E90034057C /* NetworkHelper.swift */,
+				50ABEB93235101E90034057C /* AppError.swift */,
 				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
 				50ABEB98235102230034057C /* WeatherFetch.swift */,
 				50ABEB9C235104EC0034057C /* Secretes.swift */,
