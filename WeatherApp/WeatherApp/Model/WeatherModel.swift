@@ -27,11 +27,12 @@ struct DataWrapper: Codable{
     let sunsetTime: Int
     let windSpeed: Double
     let precipIntensityMax: Double
+  
     var date : String {
         get {
             let date = NSDate(timeIntervalSince1970: TimeInterval(time)) as Date
             let df = DateFormatter()
-            df.dateFormat = "MMM-dd-yyyy"
+            df.dateFormat = "MMM dd, yyyy"
             return df.string(from:date)
         }
     }

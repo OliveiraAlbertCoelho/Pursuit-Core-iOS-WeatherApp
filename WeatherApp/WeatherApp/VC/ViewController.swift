@@ -55,6 +55,8 @@ class ViewController: UIViewController {
         }
     }
     private func getWeather(zipcode: String){
+    
+        
         ZipCodeHelper.getLatLong(fromZipCode: zipcode) { (result) in
             DispatchQueue.main.async {
                 switch result{
@@ -67,8 +69,8 @@ class ViewController: UIViewController {
                     alert.addAction(cancelMessage)
                     self.present(alert,animated: true)
                     
-                case let .success(lat,long,name):
-                    self.cityName.text = name
+                case let .success(lat,long,name,subName):
+                    self.cityName.text = "\(subName), \(name)"
                     self.latAndLongHolder = "\(lat.description),\(long.description)"
                 }
             }
@@ -103,6 +105,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let vc: DetailWeatherVCViewController = DetailWeatherVCViewController()
         vc.weatherData = weather[indexPath.row]
         vc.city = cityName.text!
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -111,7 +114,6 @@ extension ViewController: UITextFieldDelegate{
         if let text = textField.text{
             getWeather(zipcode: text)
             UserDefaultWrapper.manager.store(mode:text)
-            
         }
         return true
     }

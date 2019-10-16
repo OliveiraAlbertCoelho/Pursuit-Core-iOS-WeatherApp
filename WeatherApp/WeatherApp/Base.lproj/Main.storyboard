@@ -116,12 +116,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTO-ZH-9et">
-                                <rect key="frame" x="92" y="501" width="231" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your city and zip code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTO-ZH-9et">
+                                <rect key="frame" x="0.0" y="501" width="414" height="38"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="2jE-m1-Gx2"/>
-                                    <constraint firstAttribute="width" constant="231" id="UKt-si-zLT"/>
+                                    <constraint firstAttribute="height" constant="38" id="ZC3-ai-4TY"/>
+                                    <constraint firstAttribute="width" constant="414" id="gF4-c0-7pW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -134,13 +134,13 @@
                             <constraint firstItem="ug1-OU-D71" firstAttribute="top" secondItem="R1C-Oa-rRZ" secondAttribute="bottom" constant="28" id="7Vq-gx-vi6"/>
                             <constraint firstItem="R1C-Oa-rRZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ih-3e-Zzp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R1C-Oa-rRZ" secondAttribute="trailing" id="8wk-0C-CMJ"/>
+                            <constraint firstItem="RTO-ZH-9et" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AgX-LB-mBR"/>
+                            <constraint firstItem="RTO-ZH-9et" firstAttribute="top" secondItem="ug1-OU-D71" secondAttribute="bottom" constant="29" id="DOr-wd-RLa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YIz-7R-Gnp" secondAttribute="bottom" constant="187" id="Fx2-H1-F3v"/>
-                            <constraint firstItem="YIz-7R-Gnp" firstAttribute="top" secondItem="RTO-ZH-9et" secondAttribute="bottom" constant="53" id="Htg-tN-n6g"/>
-                            <constraint firstItem="RTO-ZH-9et" firstAttribute="top" secondItem="ug1-OU-D71" secondAttribute="bottom" constant="29" id="JZd-AH-Fpb"/>
                             <constraint firstItem="R1C-Oa-rRZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="XBA-BJ-e3v"/>
+                            <constraint firstItem="YIz-7R-Gnp" firstAttribute="top" secondItem="RTO-ZH-9et" secondAttribute="bottom" constant="53" id="a5N-WO-c8E"/>
                             <constraint firstItem="ug1-OU-D71" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dkd-Qi-vyA"/>
                             <constraint firstItem="ug1-OU-D71" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hsa-nr-9pY"/>
-                            <constraint firstItem="RTO-ZH-9et" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="92" id="psT-bl-0BL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
