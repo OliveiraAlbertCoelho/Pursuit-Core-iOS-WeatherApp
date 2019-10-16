@@ -13,7 +13,7 @@ class DetailWeatherVCViewController: UIViewController {
     var city = String()
     var images: ImagesData?{
         didSet{
-           getImage()
+            getImage()
         }
     }
     
@@ -64,7 +64,7 @@ class DetailWeatherVCViewController: UIViewController {
     lazy var precipitation: UILabel = {
         
         var precipitation = UILabel()
-         precipitation.textColor = .white
+        precipitation.textColor = .white
         precipitation.text =  "Inches of Precipitation: \(weatherData!.precipIntensityMax.description)"
         return precipitation
     }()
@@ -77,17 +77,24 @@ class DetailWeatherVCViewController: UIViewController {
         return saveButton
     }()
     @IBAction func saveAction(sender: UIBarButtonItem) {
-              guard let imageData = self.cityImage.image?.jpegData(compressionQuality: 0.5)
-                    else {return}
-                let date = Date().description
-        let photoData = Photo(date: date, image: imageData)
-                try?
-                    ImagePersistence.manager.saveImage(info: photoData)
+        guard let imageData = self.cityImage.image?.jpegData(compressionQuality: 0.5)
+            else {return}
+        let date = Date().description
         
-        let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .alert)
+        let photoData = Photo(date: date, image: imageData, id: images!.id)
+        if photoData.checkFavorites()!{
+            let alert = UIAlertController(title: "", message: "Oops you have saved this image before", preferredStyle: .alert)
+            let cancelMessage = UIAlertAction(title: "Ok got it", style: .cancel)
+            alert.addAction(cancelMessage)
             self.present(alert,animated: true)
-        alert.dismiss(animated: true, completion: nil)
-            }
+        }else {
+            try?
+                ImagePersistence.manager.saveImage(info: photoData)
+            
+            let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .alert)
+            self.present(alert,animated: true)
+          alert.dismiss(animated: true, completion: nil)
+        }}
     lazy var stackLabels: UIStackView = {
         let stackLabels = UIStackView(arrangedSubviews: [titleLabel,weatherInfo,highLabel,lowLabel,sunriseLabel,sunsetLabel,precipitation])
         stackLabels.axis = .vertical
@@ -97,7 +104,7 @@ class DetailWeatherVCViewController: UIViewController {
         return stackLabels
     }()
     private func constrainStackView() {
-         view.addSubview(stackLabels)
+        view.addSubview(stackLabels)
         stackLabels.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackLabels.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -145,7 +152,7 @@ class DetailWeatherVCViewController: UIViewController {
     }
     private func SetUpView(){
         view.backgroundColor = .brown
-    self.navigationItem.rightBarButtonItem = saveButton
+        self.navigationItem.rightBarButtonItem = saveButton
     }
 }
 

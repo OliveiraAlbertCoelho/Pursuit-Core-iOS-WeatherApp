@@ -60,7 +60,7 @@ class ViewController: UIViewController {
                 switch result{
                 case let .failure(error):
                     print(error)
-                    let alert = UIAlertController(title: "Oh No Invalid Zip Code", message: "Please enter a valid Zip Code ", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error", message: "Please enter a valid address ", preferredStyle: .alert)
                     let cancelMessage = UIAlertAction(title: "Ok got it", style: .cancel) { (result) in
                         self.userText.text = ""
                     }
