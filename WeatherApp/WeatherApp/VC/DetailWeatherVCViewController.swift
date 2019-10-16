@@ -80,9 +80,13 @@ class DetailWeatherVCViewController: UIViewController {
               guard let imageData = self.cityImage.image?.jpegData(compressionQuality: 0.5)
                     else {return}
                 let date = Date().description
-                let photoData = Photo(date: date, image: imageData)
+        let photoData = Photo(date: date, image: imageData)
                 try?
                     ImagePersistence.manager.saveImage(info: photoData)
+        
+        let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .alert)
+            self.present(alert,animated: true)
+        alert.dismiss(animated: true, completion: nil)
             }
     lazy var stackLabels: UIStackView = {
         let stackLabels = UIStackView(arrangedSubviews: [titleLabel,weatherInfo,highLabel,lowLabel,sunriseLabel,sunsetLabel,precipitation])
@@ -140,7 +144,7 @@ class DetailWeatherVCViewController: UIViewController {
         }
     }
     private func SetUpView(){
-      view.backgroundColor = .darkGray
+        view.backgroundColor = .brown
     self.navigationItem.rightBarButtonItem = saveButton
     }
 }

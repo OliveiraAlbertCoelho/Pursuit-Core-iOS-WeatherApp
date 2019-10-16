@@ -14,7 +14,7 @@ struct ImagePersistence{
     private let persistenceHelper = PersistenceHelper<Photo>(fileName: "imageData.plist")
     
     func getImage() throws -> [Photo]{
-        return try persistenceHelper.getObjects()
+        return try persistenceHelper.getObjects().reversed()
     }
     func saveImage(info: Photo) throws{
         try persistenceHelper.save(newElement: info)
@@ -25,4 +25,5 @@ struct ImagePersistence{
     func editImage(Int: Int, newElement: Photo) throws{
         try persistenceHelper.edit(num: Int, newElement: newElement)
     }
+    
 }

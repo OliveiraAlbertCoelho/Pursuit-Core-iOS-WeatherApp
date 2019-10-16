@@ -13,5 +13,4 @@ class FavoriteCell: UICollectionViewCell {
     @IBOutlet weak var favoriteImage: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     
-    
 }

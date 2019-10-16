@@ -11,7 +11,6 @@ import Foundation
 struct Photo: Codable{
     let date: String
     let image: Data
-    
     var dateFormat: String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss z"

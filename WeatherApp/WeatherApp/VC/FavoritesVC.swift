@@ -38,9 +38,7 @@ extension FavoritesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(favorite.count)
         return favorite.count
-        
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = favoriteTable.dequeueReusableCell(withReuseIdentifier: "favCell", for: indexPath) as! FavoriteCell
         let data = favorite[indexPath.row]
@@ -49,9 +47,7 @@ extension FavoritesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         cell.dateLabel.text = data.dateFormat
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         return CGSize(width: 340, height: 350)
-     }
+
     
 }
 

@@ -12,5 +12,6 @@ struct Pixabay: Codable{
     let hits: [ImagesData]
 }
 struct ImagesData: Codable {
+    let id: Int
     let largeImageURL: String
 }
