@@ -5,10 +5,13 @@
 //  Created by David Rifkin on 10/8/19.
 //  Copyright © 2019 David Rifkin. All rights reserved.
 //
-
+import MapKit
+import CoreLocation
 import UIKit
 
 class ViewController: UIViewController {
+    var locationManager = CLLocationManager()
+    var userStoredLocation = String()
     var weather = [DataWrapper](){
         didSet{
             collectionTable.reloadData()
@@ -19,6 +22,7 @@ class ViewController: UIViewController {
             loadData(userInput: latAndLongHolder)
         }
     }
+   
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var collectionTable: UICollectionView!
     @IBOutlet weak var cityName: UILabel!
@@ -28,8 +32,6 @@ class ViewController: UIViewController {
         setModeFromUserDefaults()
         loadDataUserDefault()
         setDelegates()
-        
-        
     }
     private func loadDataUserDefault(){
         if let text = userText.text {
@@ -81,6 +83,19 @@ class ViewController: UIViewController {
             userText.text = mode
         }
     }
+    private func getAutho(){
+           locationManager.requestAlwaysAuthorization()
+           if CLLocationManager.locationServicesEnabled() {
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.startUpdatingLocation()
+            }
+       }
+    @IBAction func getUserLocation(_ sender: UIButton) {
+        getAutho()
+        getWeather(zipcode: userStoredLocation)
+    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -112,11 +127,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let text = textField.text{
-            getWeather(zipcode: text)
             UserDefaultWrapper.manager.store(mode:text)
+            getWeather(zipcode: text)
         }
         textField.resignFirstResponder()
         return true
     }
     
+}
+extension ViewController: CLLocationManagerDelegate{
+ 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        userStoredLocation = "\(locValue.latitude) \(locValue.longitude)"
+        getWeather(zipcode: "\(locValue.latitude) \(locValue.longitude)" )
+    }
 }

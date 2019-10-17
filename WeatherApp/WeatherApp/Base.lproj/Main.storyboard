@@ -107,8 +107,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City or Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-7R-Gnp">
-                                <rect key="frame" x="92" y="592" width="231" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City or Zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-7R-Gnp">
+                                <rect key="frame" x="92" y="593" width="231" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="GaK-M7-NRw"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="231" id="nsQ-b7-nFD"/>
@@ -127,6 +127,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnb-Ok-Fco">
+                                <rect key="frame" x="0.0" y="678" width="414" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="VSJ-48-QAJ"/>
+                                    <constraint firstAttribute="width" constant="414" id="cI0-8V-2YN"/>
+                                </constraints>
+                                <state key="normal" title="Use location" image="location" catalog="system">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getUserLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0ph-gM-hc1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -134,9 +147,11 @@
                             <constraint firstItem="ug1-OU-D71" firstAttribute="top" secondItem="R1C-Oa-rRZ" secondAttribute="bottom" constant="28" id="7Vq-gx-vi6"/>
                             <constraint firstItem="R1C-Oa-rRZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ih-3e-Zzp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R1C-Oa-rRZ" secondAttribute="trailing" id="8wk-0C-CMJ"/>
+                            <constraint firstItem="cnb-Ok-Fco" firstAttribute="top" secondItem="YIz-7R-Gnp" secondAttribute="bottom" constant="52" id="AaQ-2h-XRG"/>
                             <constraint firstItem="RTO-ZH-9et" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AgX-LB-mBR"/>
                             <constraint firstItem="RTO-ZH-9et" firstAttribute="top" secondItem="ug1-OU-D71" secondAttribute="bottom" constant="29" id="DOr-wd-RLa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YIz-7R-Gnp" secondAttribute="bottom" constant="187" id="Fx2-H1-F3v"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cnb-Ok-Fco" secondAttribute="bottom" constant="100" id="ENA-NP-3E9"/>
+                            <constraint firstItem="cnb-Ok-Fco" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fnc-cf-j9Y"/>
                             <constraint firstItem="R1C-Oa-rRZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="XBA-BJ-e3v"/>
                             <constraint firstItem="YIz-7R-Gnp" firstAttribute="top" secondItem="RTO-ZH-9et" secondAttribute="bottom" constant="53" id="a5N-WO-c8E"/>
                             <constraint firstItem="ug1-OU-D71" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dkd-Qi-vyA"/>
@@ -270,4 +285,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="906.69642857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
