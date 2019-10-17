@@ -152,7 +152,7 @@ class DetailWeatherVCViewController: UIViewController {
         }
     }
     private func SetUpView(){
-        view.backgroundColor = .brown
+        view.backgroundColor = UIColor(displayP3Red: CGFloat(0.559), green: CGFloat(0.716), blue: CGFloat(0.839), alpha: CGFloat(1.0))
         self.navigationItem.rightBarButtonItem = saveButton
     }
 }

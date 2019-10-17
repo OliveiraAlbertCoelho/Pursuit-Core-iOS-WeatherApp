@@ -104,6 +104,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         cell?.weatherImage.image = UIImage(named: data.icon)
         cell?.highLabel.text = data.highTemp
         cell?.lowLabel.text = data.lowTemp
+        cell?.layer.borderWidth = 5
+        cell?.layer.borderColor = CGColor(srgbRed: 0.682, green: 0.809, blue: 0.663, alpha: 1.0)
         print(data.icon)
         return cell!
     }

@@ -96,7 +96,7 @@
                                                 <constraint firstItem="8sI-6e-ei7" firstAttribute="leading" secondItem="HmV-iU-gxa" secondAttribute="leading" constant="66" id="w6b-lH-MMp"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.3753499985" green="0.56638479230000005" blue="0.7412007451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="381" height="265"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="zvt-u6-8qW" id="827-2R-nF8"/>
@@ -141,7 +141,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.58963143829999998" green="0.71235251430000002" blue="0.82746845479999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="YIz-7R-Gnp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="92" id="1Yj-ly-2PN"/>
                             <constraint firstItem="ug1-OU-D71" firstAttribute="top" secondItem="R1C-Oa-rRZ" secondAttribute="bottom" constant="28" id="7Vq-gx-vi6"/>
@@ -218,7 +218,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LtV-AW-mSH">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kfp-Cv-v2k">
                                     <size key="itemSize" width="408" height="221"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
