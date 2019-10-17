@@ -34,17 +34,17 @@
                                     <constraint firstAttribute="width" constant="414" id="drN-Ky-hVf"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y3p-jf-TqY">
-                                    <size key="itemSize" width="381" height="265"/>
+                                    <size key="itemSize" width="381" height="261"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weatherCell" id="Ilx-1e-XCy" customClass="WeatherCell" customModule="WeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2" width="381" height="265"/>
+                                        <rect key="frame" x="0.0" y="4" width="381" height="261"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HmV-iU-gxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="265"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="261"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sI-6e-ei7">
@@ -97,7 +97,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.3753499985" green="0.56638479230000005" blue="0.7412007451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <size key="customSize" width="381" height="265"/>
+                                        <size key="customSize" width="381" height="261"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="zvt-u6-8qW" id="827-2R-nF8"/>
                                             <outlet property="highLabel" destination="Who-PO-fze" id="f0f-Yh-XMK"/>
@@ -170,6 +170,73 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="115.84821428571428"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="S5f-kd-V3k">
+            <objects>
+                <viewController id="524-VT-MnN" customClass="FavoritesWeatherVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S7U-31-TJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8u0-xP-11f">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favCell" rowHeight="288" id="wd0-Ii-3px" customClass="favoriteWeatherCellTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="288"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wd0-Ii-3px" id="7n6-N8-jyY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="288"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JHo-5g-mRG">
+                                                    <rect key="frame" x="20" y="11" width="374" height="266"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="266" id="Ayr-BY-gxY"/>
+                                                        <constraint firstAttribute="width" constant="374" id="ybm-JZ-VeC"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-xy-uWc">
+                                                    <rect key="frame" x="30" y="21" width="166" height="47"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JHo-5g-mRG" firstAttribute="leading" secondItem="7n6-N8-jyY" secondAttribute="leadingMargin" id="1Xd-Nu-VZh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JHo-5g-mRG" secondAttribute="trailing" id="6bD-96-f85"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JHo-5g-mRG" secondAttribute="bottom" id="aDh-ef-ebZ"/>
+                                                <constraint firstItem="JHo-5g-mRG" firstAttribute="top" secondItem="7n6-N8-jyY" secondAttribute="topMargin" id="qGw-My-sBt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityName" destination="r6Q-xy-uWc" id="sPC-kj-e2E"/>
+                                            <outlet property="weatherImage" destination="JHo-5g-mRG" id="U9p-cn-57D"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8u0-xP-11f" firstAttribute="bottom" secondItem="S86-tF-QCO" secondAttribute="bottom" id="0X4-vW-tLl"/>
+                            <constraint firstItem="S86-tF-QCO" firstAttribute="trailing" secondItem="8u0-xP-11f" secondAttribute="trailing" id="Dj2-ff-F3c"/>
+                            <constraint firstItem="8u0-xP-11f" firstAttribute="top" secondItem="S86-tF-QCO" secondAttribute="top" id="cvW-Pr-Dbb"/>
+                            <constraint firstItem="8u0-xP-11f" firstAttribute="leading" secondItem="S86-tF-QCO" secondAttribute="leading" id="faC-Sj-xTV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="S86-tF-QCO"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="v7w-gn-Jva"/>
+                    <connections>
+                        <outlet property="favoriteTable" destination="8u0-xP-11f" id="iQE-E2-kBw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3d-Vw-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1095.6521739130435" y="901.33928571428567"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qTN-ut-4CJ">
             <objects>
@@ -179,25 +246,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="RJd-MO-s7o" kind="relationship" relationship="viewControllers" id="TAi-Y3-TkD"/>
                         <segue destination="mqc-FM-JFW" kind="relationship" relationship="viewControllers" id="gsF-xC-hbH"/>
+                        <segue destination="524-VT-MnN" kind="relationship" relationship="viewControllers" id="4ua-1z-SYg"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0I-0m-ieA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--iWeather-->
         <scene sceneID="ehg-5k-cHC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RJd-MO-s7o" sceneMemberID="viewController">
+                <navigationController title="iWeather" automaticallyAdjustsScrollViewInsets="NO" id="RJd-MO-s7o" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="QD0-d5-ddy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iOd-D3-pjq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -218,7 +289,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LtV-AW-mSH">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.67568749189999999" green="0.78706961870000003" blue="0.88629013300000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kfp-Cv-v2k">
                                     <size key="itemSize" width="408" height="221"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -247,6 +318,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.67568749189999999" green="0.78706961870000003" blue="0.88629013300000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="hST-fr-N8f" firstAttribute="leading" secondItem="cma-m3-Ybe" secondAttribute="leading" id="33h-Zy-a3d"/>
                                                 <constraint firstAttribute="trailing" secondItem="hST-fr-N8f" secondAttribute="trailing" id="4gV-yU-6pB"/>
@@ -257,6 +329,7 @@
                                                 <constraint firstItem="SB0-iE-smi" firstAttribute="leading" secondItem="cma-m3-Ybe" secondAttribute="leading" id="zJP-wR-Yp5"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.67568749189999999" green="0.78706961870000003" blue="0.88629013300000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="408" height="221"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="SB0-iE-smi" id="9l9-Pk-ZXZ"/>
@@ -266,7 +339,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.69511544700000005" green="0.78320533039999995" blue="0.87844616170000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="LtV-AW-mSH" firstAttribute="bottom" secondItem="g1d-ru-K4G" secondAttribute="bottom" id="Akc-Bi-eRU"/>
                             <constraint firstItem="LtV-AW-mSH" firstAttribute="top" secondItem="g1d-ru-K4G" secondAttribute="top" id="E28-fG-Pdo"/>

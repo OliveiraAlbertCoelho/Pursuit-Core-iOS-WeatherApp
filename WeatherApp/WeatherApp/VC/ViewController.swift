@@ -14,13 +14,13 @@ class ViewController: UIViewController {
     var userLocationprivacy = ""
     var userStoredLocation = String(){
         didSet{
-                   loadData(userInput: userStoredLocation)
-               }
+            loadData(userInput: userStoredLocation)
+        }
     }
     @IBOutlet weak var userText: UITextField!
     @IBOutlet weak var collectionTable: UICollectionView!
     @IBOutlet weak var cityName: UILabel!
-      
+    
     var weather = [DataWrapper](){
         didSet{
             collectionTable.reloadData()
@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         setModeFromUserDefaults()
         loadDataUserDefault()
         setDelegates()
+//        setUpObservers()
+//        setUpTap()
     }
     private func loadData(userInput: String?){
         WeatherFetch.manager.getWeather(latAndLong: userInput){ (result) in
@@ -88,10 +90,33 @@ class ViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
-    @IBAction func getUserLocation(_ sender: UIButton) {
-        getWeather(zipcode: userLocationprivacy)
-        
-    }
+//    @IBAction func getUserLocation(_ sender: UIButton) {
+//        getWeather(zipcode: userLocationprivacy)
+//        UserDefaultWrapper.manager.store(mode: cityName.text!)
+//    }
+//    func setUpObservers(){
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//    func setUpTap(){
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(gesture:)))
+//        view.addGestureRecognizer(tapGesture)
+//    }
+//    @objc func tap(gesture: UITapGestureRecognizer) {
+//        userText.resignFirstResponder()
+//    }
+//    @objc   func keyboardWillHide() {
+//        self.view.frame.origin.y = 0
+//    }
+//
+//    @objc  func keyboardWillChange(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            if userText.isFirstResponder {
+//                self.view.frame.origin.y  = -keyboardSize.height
+//            }
+//        }
+//    }
 }
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -114,8 +139,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: DetailWeatherVCViewController = DetailWeatherVCViewController()
-        vc.weatherData = weather[indexPath.row]
+        vc.SelectedweatherData = weather[indexPath.row]
         vc.city = cityName.text!
+        vc.latLong = userStoredLocation
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

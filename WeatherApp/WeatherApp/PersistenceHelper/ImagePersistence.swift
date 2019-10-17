@@ -26,4 +26,5 @@ struct ImagePersistence{
         try persistenceHelper.edit(num: Int, newElement: newElement)
     }
     
+    
 }

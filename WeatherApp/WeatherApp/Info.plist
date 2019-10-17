@@ -64,8 +64,6 @@
 	<string>Allow for better user experience</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Allow for better user experience</string>
-	<key>NSFileProviderDomainUsageDescription</key>
-	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

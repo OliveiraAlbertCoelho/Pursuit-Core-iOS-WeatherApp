@@ -9,8 +9,9 @@
 import UIKit
 
 class DetailWeatherVCViewController: UIViewController {
-    var weatherData: DataWrapper?
+    var SelectedweatherData: DataWrapper?
     var city = String()
+    var latLong = String()
     var images: ImagesData?{
         didSet{
             getImage()
@@ -28,44 +29,44 @@ class DetailWeatherVCViewController: UIViewController {
     lazy var weatherInfo: UILabel = {
         var weatherInfo = UILabel()
         weatherInfo.textColor = .white
-        weatherInfo.text = weatherData?.summary
+        weatherInfo.text = SelectedweatherData?.summary
         return weatherInfo
     }()
     lazy var titleLabel: UILabel = {
         var titleLabel = UILabel()
         titleLabel.textColor = .white
-        titleLabel.text = "\(city)  \(weatherData!.date)"
+        titleLabel.text = "\(city)  \(SelectedweatherData!.date)"
         return titleLabel
     }()
     lazy var highLabel: UILabel = {
         var highLabel = UILabel()
         highLabel.textColor = .white
-        highLabel.text = weatherData?.highTemp
+        highLabel.text = SelectedweatherData?.highTemp
         return highLabel
     }()
     lazy var lowLabel: UILabel = {
         var lowLabel = UILabel()
         lowLabel.textColor = .white
-        lowLabel.text = weatherData?.lowTemp
+        lowLabel.text = SelectedweatherData?.lowTemp
         return lowLabel
     }()
     lazy var sunriseLabel: UILabel = {
         var sunriseLabel = UILabel()
-        sunriseLabel.text = weatherData?.timeSunRise
+        sunriseLabel.text = SelectedweatherData?.timeSunRise
         sunriseLabel.textColor = .white
         return sunriseLabel
     }()
     lazy var sunsetLabel: UILabel = {
         var sunsetLabel = UILabel()
         sunsetLabel.textColor = .white
-        sunsetLabel.text = weatherData?.timeSunset
+        sunsetLabel.text = SelectedweatherData?.timeSunset
         return sunsetLabel
     }()
     lazy var precipitation: UILabel = {
         
         var precipitation = UILabel()
         precipitation.textColor = .white
-        precipitation.text =  "Inches of Precipitation: \(weatherData!.precipIntensityMax.description)"
+        precipitation.text =  "Inches of Precipitation: \(SelectedweatherData!.precipIntensityMax.description)"
         return precipitation
     }()
     lazy var cityImage: UIImageView = {
@@ -82,19 +83,35 @@ class DetailWeatherVCViewController: UIViewController {
         let date = Date().description
         
         let photoData = Photo(date: date, image: imageData, id: images!.id)
-        if photoData.checkFavorites()!{
-            let alert = UIAlertController(title: "", message: "Oops you have saved this image before", preferredStyle: .alert)
-            let cancelMessage = UIAlertAction(title: "Ok got it", style: .cancel)
-            alert.addAction(cancelMessage)
-            self.present(alert,animated: true)
-        }else {
-            try?
-                ImagePersistence.manager.saveImage(info: photoData)
-            
-            let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .alert)
-            self.present(alert,animated: true)
-          alert.dismiss(animated: true, completion: nil)
-        }}
+        
+        let optionsMenu = UIAlertController.init(title: "Options", message: "Pick an Option", preferredStyle: .actionSheet)
+        let saveImage = UIAlertAction.init(title: "Save image", style: .default) { (action) in
+            if photoData.checkFavorites()!{
+                let alert = UIAlertController(title: "", message: "Oops you have saved this image before", preferredStyle: .alert)
+                let cancelMessage = UIAlertAction(title: "Ok got it", style: .cancel)
+                alert.addAction(cancelMessage)
+                self.present(alert,animated: true)
+            }else {
+                try?
+                    ImagePersistence.manager.saveImage(info: photoData)
+                
+                let alert = UIAlertController(title: "", message: "Saved", preferredStyle: .alert)
+                self.present(alert,animated: true)
+                alert.dismiss(animated: true, completion: nil)
+            }}
+        
+        let saveWeather = UIAlertAction.init(title: "SaveWeather", style: .default) {
+            (action) in
+            let weatherData = FavoriteWeahter(cityName: self.city, weatherInfo: self.SelectedweatherData!, latAndLong: self.latLong , photo: imageData)
+          try?  favoriteWeatherPersistence.manager.saveImage(info: weatherData)
+        }
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+           optionsMenu.addAction(saveImage)
+        optionsMenu.addAction(saveWeather)
+        optionsMenu.addAction(cancelAction)
+        present(optionsMenu, animated: true, completion: nil)
+        
+    }
     lazy var stackLabels: UIStackView = {
         let stackLabels = UIStackView(arrangedSubviews: [titleLabel,weatherInfo,highLabel,lowLabel,sunriseLabel,sunsetLabel,precipitation])
         stackLabels.axis = .vertical
@@ -103,7 +120,7 @@ class DetailWeatherVCViewController: UIViewController {
         stackLabels.spacing = 5
         return stackLabels
     }()
- 
+    
     private func constrainStackView() {
         view.addSubview(stackLabels)
         stackLabels.translatesAutoresizingMaskIntoConstraints = false
