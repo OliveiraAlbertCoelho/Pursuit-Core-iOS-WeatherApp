@@ -19,29 +19,31 @@ class WeatherAppTests: XCTestCase {
     }
     
     func testWeatherFromJson() {
-        guard let path = Bundle.main.path(forResource: "jsonWeather", ofType: "json") else { return }
-        var jsonData = Data()
-        do {
-            jsonData = try Data(contentsOf: URL(fileURLWithPath: path))
-        }catch{
-            print(error)
-            XCTFail()
+              guard let jsonPath = Bundle.main.path(forResource: "weatherJson", ofType: "json") else {
+                fatalError("JSON file not found")
+            }
+            
+            var jsonData = Data()
+            do {
+                jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonPath))
+            } catch {
+                print(error)
+                XCTFail()
+            }
+            
+            // Act
+        var forecast = [DataWrapper]()
+            do {
+                let weatherInfo = try WeatherWrapper.decodeWeather(from: jsonData)
+                    forecast = weatherInfo.daily.data
+            }
+            catch {
+                print(error)
+                XCTFail()
+            }
+                
+            // Assert
+            XCTAssertTrue(forecast.count == 8, "Was expecting 8 elements, but found \(forecast.count)")
         }
-        var weather = [DataWrapper]()
-        do {
-            let weatherData = try WeatherWrapper.decodeWeather(from: jsonData)
-            weather = weatherData.daily.data
-        }
-        catch{
-            print(error)
-            XCTFail()
-        }
-    }
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
 }
