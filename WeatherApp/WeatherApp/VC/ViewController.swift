@@ -10,6 +10,7 @@ import CoreLocation
 import UIKit
 
 class ViewController: UIViewController {
+    
     var locationManager = CLLocationManager()
     var userLocationprivacy = ""
     var userStoredLocation = String(){
@@ -32,8 +33,7 @@ class ViewController: UIViewController {
         setModeFromUserDefaults()
         loadDataUserDefault()
         setDelegates()
-//        setUpObservers()
-//        setUpTap()
+        setUpObservers()
     }
     private func loadData(userInput: String?){
         WeatherFetch.manager.getWeather(latAndLong: userInput){ (result) in
@@ -90,33 +90,27 @@ class ViewController: UIViewController {
             locationManager.startUpdatingLocation()
         }
     }
-//    @IBAction func getUserLocation(_ sender: UIButton) {
-//        getWeather(zipcode: userLocationprivacy)
-//        UserDefaultWrapper.manager.store(mode: cityName.text!)
-//    }
-//    func setUpObservers(){
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-//
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//    func setUpTap(){
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(gesture:)))
-//        view.addGestureRecognizer(tapGesture)
-//    }
-//    @objc func tap(gesture: UITapGestureRecognizer) {
-//        userText.resignFirstResponder()
-//    }
-//    @objc   func keyboardWillHide() {
-//        self.view.frame.origin.y = 0
-//    }
-//
-//    @objc  func keyboardWillChange(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            if userText.isFirstResponder {
-//                self.view.frame.origin.y  = -keyboardSize.height
-//            }
-//        }
-//    }
+    @IBAction func getUserLocation(_ sender: UIButton) {
+        getWeather(zipcode: userLocationprivacy)
+        UserDefaultWrapper.manager.store(mode: cityName.text!)
+    }
+    func setUpObservers(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc   func keyboardWillHide() {
+        self.view.frame.origin.y = 0
+    }
+
+    @objc  func keyboardWillChange(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if userText.isFirstResponder {
+                self.view.frame.origin.y  = -keyboardSize.height
+            }
+        }
+    }
 }
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -163,4 +157,5 @@ extension ViewController: CLLocationManagerDelegate{
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         userLocationprivacy = "\(locValue.latitude),\(locValue.longitude)"
     }
+    
 }

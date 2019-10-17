@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startVC" id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="115.84821428571428"/>
         </scene>
-        <!--Item-->
+        <!--Favorites WeatherVC-->
         <scene sceneID="S5f-kd-V3k">
             <objects>
                 <viewController id="524-VT-MnN" customClass="FavoritesWeatherVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,10 +197,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6Q-xy-uWc">
-                                                    <rect key="frame" x="30" y="21" width="166" height="47"/>
+                                                    <rect key="frame" x="30" y="21" width="166" height="79"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -228,14 +229,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S86-tF-QCO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="v7w-gn-Jva"/>
+                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="v7w-gn-Jva"/>
                     <connections>
                         <outlet property="favoriteTable" destination="8u0-xP-11f" id="iQE-E2-kBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3d-Vw-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1095.6521739130435" y="901.33928571428567"/>
+            <point key="canvasLocation" x="138" y="881"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qTN-ut-4CJ">
@@ -355,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBn-XN-pT6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="906.69642857142856"/>
+            <point key="canvasLocation" x="1048" y="881"/>
         </scene>
     </scenes>
     <resources>

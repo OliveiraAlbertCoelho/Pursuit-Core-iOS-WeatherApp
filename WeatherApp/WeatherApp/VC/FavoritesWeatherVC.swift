@@ -26,21 +26,18 @@ class FavoritesWeatherVC: UIViewController {
         super.viewWillAppear(animated)
         loadUserFavorites()
     }
+    private func loadUserFavorites(){
+            do {
+                weather = try favoriteWeatherPersistence.manager.getImage()
+            }catch{
+                print(error)
+            }
+        }
 }
 extension FavoritesWeatherVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weather.count
     }
-    private func loadUserFavorites(){
-           do {
-               weather = try favoriteWeatherPersistence.manager.getImage()
-           }catch{
-               print(error)
-           }
-       }
-    
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favoriteTable.dequeueReusableCell(withIdentifier: "favCell", for: indexPath)as! favoriteWeatherCellTableViewCell
         let data = weather[indexPath.row]

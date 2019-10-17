@@ -10,6 +10,10 @@ import Foundation
 
 struct WeatherWrapper: Codable{
     let daily: Weather
+    static func decodeWeather(from jsonData: Data) throws -> WeatherWrapper{
+        let response = try JSONDecoder().decode(WeatherWrapper.self, from: jsonData)
+        return response
+    }
 }
 struct Weather: Codable {
     let summary: String
