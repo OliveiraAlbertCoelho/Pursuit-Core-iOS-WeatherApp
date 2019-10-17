@@ -11,39 +11,28 @@ import UIKit
 
 class ViewController: UIViewController {
     var locationManager = CLLocationManager()
-    var userStoredLocation = String()
+    var userLocationprivacy = ""
+    var userStoredLocation = String(){
+        didSet{
+                   loadData(userInput: userStoredLocation)
+               }
+    }
+    @IBOutlet weak var userText: UITextField!
+    @IBOutlet weak var collectionTable: UICollectionView!
+    @IBOutlet weak var cityName: UILabel!
+      
     var weather = [DataWrapper](){
         didSet{
             collectionTable.reloadData()
         }
     }
-    var latAndLongHolder = ""{
-        didSet{
-            loadData(userInput: latAndLongHolder)
-        }
-    }
-   
-    @IBOutlet weak var userText: UITextField!
-    @IBOutlet weak var collectionTable: UICollectionView!
-    @IBOutlet weak var cityName: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAutho()
         setModeFromUserDefaults()
         loadDataUserDefault()
         setDelegates()
     }
-    private func loadDataUserDefault(){
-        if let text = userText.text {
-            getWeather(zipcode: text)
-        }
-    }
-    private func setDelegates(){
-        collectionTable.delegate = self
-        collectionTable.dataSource = self
-        userText.delegate = self
-    }
-    
     private func loadData(userInput: String?){
         WeatherFetch.manager.getWeather(latAndLong: userInput){ (result) in
             DispatchQueue.main.async {
@@ -57,8 +46,6 @@ class ViewController: UIViewController {
         }
     }
     private func getWeather(zipcode: String){
-    
-        
         ZipCodeHelper.getLatLong(fromZipCode: zipcode) { (result) in
             DispatchQueue.main.async {
                 switch result{
@@ -70,39 +57,46 @@ class ViewController: UIViewController {
                     }
                     alert.addAction(cancelMessage)
                     self.present(alert,animated: true)
-                    
                 case let .success(lat,long,name):
                     self.cityName.text = "\(name)"
-                    self.latAndLongHolder = "\(lat.description),\(long.description)"
+                    self.userStoredLocation = "\(lat.description),\(long.description)"
                 }
             }
         }
     }
+    private func loadDataUserDefault(){
+        if let text = userText.text {
+            getWeather(zipcode: text)
+        }
+    }
+    private func setDelegates(){
+        collectionTable.delegate = self
+        collectionTable.dataSource = self
+        userText.delegate = self
+    }
+    
     private func setModeFromUserDefaults(){
         if let mode = UserDefaultWrapper.manager.getMode() {
             userText.text = mode
         }
     }
     private func getAutho(){
-           locationManager.requestAlwaysAuthorization()
-           if CLLocationManager.locationServicesEnabled() {
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                locationManager.startUpdatingLocation()
-            }
-       }
-    @IBAction func getUserLocation(_ sender: UIButton) {
-        getAutho()
-        getWeather(zipcode: userStoredLocation)
+        locationManager.requestAlwaysAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
-    
+    @IBAction func getUserLocation(_ sender: UIButton) {
+        getWeather(zipcode: userLocationprivacy)
+        
+    }
 }
-
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return weather.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionTable.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as? WeatherCell
         let data = weather[indexPath.row]
@@ -120,7 +114,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let vc: DetailWeatherVCViewController = DetailWeatherVCViewController()
         vc.weatherData = weather[indexPath.row]
         vc.city = cityName.text!
-        
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -134,13 +127,12 @@ extension ViewController: UITextFieldDelegate{
         return true
     }
     
+    
+    
 }
 extension ViewController: CLLocationManagerDelegate{
- 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        userStoredLocation = "\(locValue.latitude) \(locValue.longitude)"
-        getWeather(zipcode: "\(locValue.latitude) \(locValue.longitude)" )
+        userLocationprivacy = "\(locValue.latitude),\(locValue.longitude)"
     }
 }

@@ -61,9 +61,11 @@
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>yeahagain</string>
+	<string>Allow for better user experience</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>yeah</string>
+	<string>Allow for better user experience</string>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
