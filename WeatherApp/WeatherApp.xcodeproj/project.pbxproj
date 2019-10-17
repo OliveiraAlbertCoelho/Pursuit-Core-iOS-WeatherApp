@@ -126,7 +126,6 @@
 		50ABEB8D2350FE030034057C /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				50ABEB8C2350DE110034057C /* Supporting */,
 				50ABEB8E2350FE2C0034057C /* WeatherCell.swift */,
 				50AB1BF2235666240023625D /* FavoriteCell.swift */,
 			);
@@ -152,6 +151,7 @@
 		548CE050234D33B500B5177D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				50ABEB8C2350DE110034057C /* Supporting */,
 				50AB1BE8235659A80023625D /* PersistenceHelper */,
 				50ABEB8D2350FE030034057C /* CustomCell */,
 				50ABEB8B2350DDFF0034057C /* API */,
@@ -401,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NR846ZRL26;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -418,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NR846ZRL26;
 				INFOPLIST_FILE = WeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -69,8 +69,8 @@ class ViewController: UIViewController {
                     alert.addAction(cancelMessage)
                     self.present(alert,animated: true)
                     
-                case let .success(lat,long,name,subName):
-                    self.cityName.text = "\(subName), \(name)"
+                case let .success(lat,long,name):
+                    self.cityName.text = "\(name)"
                     self.latAndLongHolder = "\(lat.description),\(long.description)"
                 }
             }
@@ -115,6 +115,7 @@ extension ViewController: UITextFieldDelegate{
             getWeather(zipcode: text)
             UserDefaultWrapper.manager.store(mode:text)
         }
+        textField.resignFirstResponder()
         return true
     }
     

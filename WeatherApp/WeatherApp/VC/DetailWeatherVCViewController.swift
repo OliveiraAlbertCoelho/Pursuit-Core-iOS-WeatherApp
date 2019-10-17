@@ -103,6 +103,7 @@ class DetailWeatherVCViewController: UIViewController {
         stackLabels.spacing = 5
         return stackLabels
     }()
+ 
     private func constrainStackView() {
         view.addSubview(stackLabels)
         stackLabels.translatesAutoresizingMaskIntoConstraints = false
